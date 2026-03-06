@@ -59,7 +59,7 @@
 2. **Copy the folder:**
     - Move the folder into your XAMPP's `htdocs` directory.
       ```sh
-      cp -r PHP-Based-Audioplayer /path/to/xampp/htdocs/
+      cp -r Core-Php-invoice-Billing-System-as-per-Indian-GST-System /path/to/xampp/htdocs/
       ```
 
 3. **Start your local server:**
