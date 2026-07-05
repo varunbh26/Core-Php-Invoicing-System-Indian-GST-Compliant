@@ -118,7 +118,7 @@ if($try == 3)
     $taxAmount=$_POST['taxAmount'];
     $totalAftertax =$_POST['totalAftertax'];
     date_default_timezone_set("Asia/Calcutta");
-    $date= date("Y-m-d h:i:sa");
+    $date= date("Y-m-d H:i:s");
 
 
 

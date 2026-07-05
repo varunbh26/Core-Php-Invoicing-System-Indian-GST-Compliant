@@ -401,7 +401,7 @@ else
 
 <div style="margin-left: 55px; margin-right: 40px;font-size: 15px;margin-top: 8px;font-family: system-ui;" class="col-md-10" contenteditable>
  
-<p><strong>A. </strong>  Above prices are  Ex- works Ahmedabad. Transport  Charges extra.     </p>                          
+<p><strong>A. </strong>       </p>
 <p><strong>B. Payment Terms :</strong> 50% Advance along with confirmed P.O. & balance 50 % against Proforma  
 Invoice before dispatch after inspection.          </p>                                
 <p><strong>C. Delivery: </strong> Within 3 -4  Weeks from the date of receipt of confirmed P.O. along with Advance. </p>

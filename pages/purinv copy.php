@@ -43,14 +43,26 @@ while($data=mysqli_fetch_array($companydetail))
     <div class="pad margin no-print">
       
     </div>
+<?php
+  $companyName = "Unique InfoSec Solutions"; // fallback if no orderid yet
+  if(isset($_GET['orderid']))
+  {
+    $orderid=$_GET['orderid'];
+    $invdata=mysqli_query($con,"SELECT purchasecom.pcname, purchasecom.pcadd, purchasecom.pcmob, purchasecom.gst, purchasecom.email, purchasecom.pcomtype, purchaseinv2.invid, purchaseinv2.totalitems, purchaseinv2.orderid, purchaseinv2.invdate, purchaseinv2.subtotal,purchaseinv2.taxrate, purchaseinv2.taxamount, purchaseinv2.totalamount FROM purchasecom INNER JOIN purchaseinv2 WHERE purchasecom.pcid =purchaseinv2.cid AND purchaseinv2.orderid ='$orderid'");
 
+    $row = mysqli_fetch_assoc($invdata);
+    if($row) {
+      $companyName = $row['pcname'];
+    }
+  }
+?>
     <!-- Main content -->
     <section class="invoice d-flex justify-content-center col-xs-10" >
       <!-- title row -->
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> CodeTech, Inc.
+            <i class="fa fa-globe"></i> <?php echo htmlspecialchars($companyName); ?>
              <small class="pull-right"><b style="font-size: large;">Purchase Invoice </b></small> 
           </h2>
         </div>

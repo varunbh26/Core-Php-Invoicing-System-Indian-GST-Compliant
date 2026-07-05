@@ -155,7 +155,7 @@ if($try == 3)
    // echo "\n".$cvdate;
 
 $date=date('Y-m-d');
-$time=date("h:i:sa");
+$time=date("H:i:s");
 
 $created=$date." ".$time;
 

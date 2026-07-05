@@ -163,7 +163,7 @@ else
  
  if($try == 5)
  {
-  $c=mysqli_query($con,"INSERT INTO `purchasecom` (`pcid`, `pcname`, `pcadd`,`pcmob`,`email`,`gst`,`pcomtype`,`country`, `created`) VALUES ('$pcid','$pcname', '$pcadd', '$mob','$email', '$gst','$pcomtype','$country','$date')")
+  $c=mysqli_query($con,"INSERT INTO `purchasecom` ( `pcname`, `pcadd`,`pcmob`,`email`,`gst`,`pcomtype`,`country`, `created`) VALUES ('$pcname', '$pcadd', '$mob','$email', '$gst','$pcomtype','$country','$date')")
     or die("Error: " . mysqli_error($con));
 
 //echo "INSERT INTO `purchasecom` (`pcid`, `pcname`, `pcadd`,`pcmob`,`email`,`gst`,`pcomtype`,`country`, `created`) VALUES ('$pcid','$pcname', '$pcadd', '$mob','$email', '$gst','$pcomtype','$country','$date')";

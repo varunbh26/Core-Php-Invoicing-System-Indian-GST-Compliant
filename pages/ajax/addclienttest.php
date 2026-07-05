@@ -161,7 +161,7 @@ $response=array();
 if($try == 6 )
 {
 
- $c=mysqli_query($con,"INSERT INTO `client` (`cid`, `c_name`, `c_add`,`mob`,`country`,`gst`,`c_type`, `created`) VALUES ('$cid','$cname', '$cadd', '$mob','$country', '$gst','$ctype','$date')") or die("Error: " . mysqli_error($con));
+ $c=mysqli_query($con,"INSERT INTO `client` (`c_name`, `c_add`,`mob`,`country`,`gst`,`c_type`, `created`) VALUES ('$cname', '$cadd', '$mob','$country', '$gst','$ctype','$date')") or die("Error: " . mysqli_error($con));
 
 if(!$c)
 {
