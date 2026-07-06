@@ -337,7 +337,7 @@ $stmt = mysqli_query($con,$datalogger);
           </div>
           <br>
           <div class="form-group">
-            <input type="hidden" value="<?php foreach($_SESSION as $item){echo $item} ?>" class="form-control" name="userId">
+            <input type="hidden" value="<?php foreach($_SESSION as $item){echo $item}; ?>" class="form-control" name="userId">
             <input data-loading-text="Saving Invoice..." type="submit" id="submitbtn" name="submit" value="Save Invoice" style="width: 15em;  height: 3em; font-size:20px; " class="btn btn-success submit_btn invoice-save-btm">           
           </div>
           
