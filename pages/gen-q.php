@@ -655,7 +655,31 @@ function calculateTotal(){
 
 
  </script>
+<script>
 
+function showCustomer(str) {
+  var xhttp;
+  dataType: 'JSON';
+
+  if (str == "") {
+    document.getElementById("c_add").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("c_add").innerHTML = this.responseText;
+    }
+  };
+  //strs = JSON.stringify(String(str));
+
+  var encodedstr = encodeURIComponent(str);
+  console.log(encodedstr);
+
+  xhttp.open("GET", "ajax/getcustomer.php?q="+encodedstr, true);
+  xhttp.send();
+}
+</script>
   
 <script>
   $(function () {

@@ -58,13 +58,13 @@
 
         <li class="<?php if ($current_page=="manage-clients") {echo "active"; }?>">
           <a href="manage-clients.php">
-            <i class="fa fa-fw fa-shield"></i> <span>Manage Clients</span>
+            <i class="fa fa-fw fa-shield"></i> <span>Clients</span>
                       </a>
         </li>
 
         <li class="<?php if ($current_page=="manage-products") {echo "active"; }?>">
           <a href="manage-products.php">
-            <i  class="fa fa-fw fa-gears"></i> <span>Products</span>
+            <i  class="fa fa-fw fa-gears"></i> <span>Manage Services</span>
                       </a>
         </li>
 

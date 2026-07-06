@@ -842,8 +842,60 @@ function submitInvoice(formData) {
 }
 
  </script>
+<script>
+function showproduct(str) {
+  var xhttp;
+  if (str == "") {
+    document.getElementById("hsn_1").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("hsn_1").innerHTML = this.responseText;
+    }
+  };
+  var encodedstr = encodeURIComponent(str);
+  xhttp.open("GET", "ajax/getproduct.php?q=" + encodedstr, true);
+  xhttp.send();
+}
+</script>
+<script>
+function calculateTotal(){
+  var totalAmount = 0;
+  $("[id^='price_']").each(function() {
+    var id = $(this).attr('id');
+    id = id.replace("price_",'');
+    var price = $('#price_'+id).val();
+    var quantity  = $('#quantity_'+id).val();
+    if(!quantity) {
+      quantity = 1;
+    }
+    var total = price*quantity;
+    $('#total_'+id).val(parseFloat(total));
+    totalAmount += total;
+  });
+  $('#subTotal').val(parseFloat(totalAmount));
+  var taxRate = $("#taxRate").val();
+  var subTotal = $('#subTotal').val();
 
+  if(subTotal) {
+    var taxAmount = Math.ceil(subTotal*taxRate/100);
+    $('#taxAmount').val(taxAmount);
+    subTotal =Math.ceil(parseFloat(subTotal)+parseFloat(taxAmount));
+    $('#totalAftertax').val(subTotal);
 
+    var amountPaid = $('#amountPaid').val();
+    var totalAftertax = $('#totalAftertax').val();
+    if(amountPaid && totalAftertax) {
+      totalAftertax = totalAftertax-amountPaid;
+      $('#amountDue').val(totalAftertax);
+    } else {
+      $('#amountDue').val(subTotal);
+    }
+  }
+}
+</script>
 <script>
   $(function () {
     //Initialize Select2 Elements
