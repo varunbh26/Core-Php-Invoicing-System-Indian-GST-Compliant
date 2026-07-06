@@ -337,7 +337,7 @@ $stmt = mysqli_query($con,$datalogger);
           </div>
           <br>
           <div class="form-group">
-            <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" class="form-control" name="userId">
+            <input type="hidden" value="<?php foreach($_SESSION as $item){echo $item} ?>" class="form-control" name="userId">
             <input data-loading-text="Saving Invoice..." type="submit" id="submitbtn" name="submit" value="Save Invoice" style="width: 15em;  height: 3em; font-size:20px; " class="btn btn-success submit_btn invoice-save-btm">           
           </div>
           
@@ -425,7 +425,40 @@ $stmt = mysqli_query($con,$datalogger);
 
  <script>
 
- 
+ function calculateTotal(){
+   var totalAmount = 0;
+   $("[id^='price_']").each(function() {
+     var id = $(this).attr('id');
+     id = id.replace("price_",'');
+     var price = $('#price_'+id).val();
+     var quantity  = $('#quantity_'+id).val();
+     if(!quantity) {
+       quantity = 1;
+     }
+     var total = price*quantity;
+     $('#total_'+id).val(parseFloat(total));
+     totalAmount += total;
+   });
+   $('#subTotal').val(parseFloat(totalAmount));
+   var taxRate = $("#taxRate").val();
+   var subTotal = $('#subTotal').val();
+
+   if(subTotal) {
+     var taxAmount = Math.ceil(subTotal*taxRate/100);
+     $('#taxAmount').val(taxAmount);
+     subTotal =Math.ceil(parseFloat(subTotal)+parseFloat(taxAmount));
+     $('#totalAftertax').val(subTotal);
+
+     var amountPaid = $('#amountPaid').val();
+     var totalAftertax = $('#totalAftertax').val();
+     if(amountPaid && totalAftertax) {
+       totalAftertax = totalAftertax-amountPaid;
+       $('#amountDue').val(totalAftertax);
+     } else {
+       $('#amountDue').val(subTotal);
+     }
+   }
+ }
   $(document).ready(function(){
   
     var final_total_amt = $('#final_total_amt').text();
@@ -894,6 +927,30 @@ function calculateTotal(){
       $('#amountDue').val(subTotal);
     }
   }
+}
+</script>
+<script>
+function showCustomer(str) {
+  var xhttp;
+  dataType: 'JSON';
+
+  if (str == "") {
+    document.getElementById("c_add").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("c_add").innerHTML = this.responseText;
+    }
+  };
+  //strs = JSON.stringify(String(str));
+
+  var encodedstr = encodeURIComponent(str);
+  console.log(encodedstr);
+
+  xhttp.open("GET", "ajax/getcustomer.php?q="+encodedstr, true);
+  xhttp.send();
 }
 </script>
 <script>
